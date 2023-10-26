@@ -1,0 +1,17 @@
+<ul>
+  <li *ngFor="let item of todoItems" [ngClass]="{'completed': item.status === 'Completed'}">
+    <span>{{ item.name }}</span>
+    <span>{{ item.date | date: 'shortDate' }}</span>
+    <button (click)="editItem(item)">Edit</button>
+    <button (click)="deleteItem(item)">Delete</button>
+    <button (click)="toggleStatus(item)">{{ item.status === 'Completed' ? 'Reopen' : 'Complete' }}</button>
+  </li>
+</ul>
+<div>
+  <input type="date" [(ngModel)]="filterDate" (input)="applyFilter()">
+  <select [(ngModel)]="filterStatus" (change)="applyFilter()">
+    <option value="">All</option>
+    <option value="Active">Active</option>
+    <option value="Completed">Completed</option>
+  </select>
+</div>

@@ -1,0 +1,9 @@
+<ul>
+  <li *ngFor="let item of todoItems" [ngClass]="{'completed': item.status === 'Completed'}">
+    <span>{{ item.name }}</span>
+    <span>{{ item.date | date: 'shortDate' }}</span>
+    <button (click)="editItem(item)">Edit</button>
+    <button (click)="deleteItem(item)">Delete</button>
+    <button (click)="toggleStatus(item)">{{ item.status === 'Completed' ? 'Reopen' : 'Complete' }}</button>
+  </li>
+</ul>
